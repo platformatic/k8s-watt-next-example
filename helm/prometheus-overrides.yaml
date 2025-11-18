@@ -1,6 +1,5 @@
 # Prometheus Operator (kube-prometheus-stack) configuration
 prometheus:
-  # Service configuration for external access
   service:
     type: NodePort
     nodePort: 30090
