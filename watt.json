@@ -14,6 +14,9 @@
       "hostname": "0.0.0.0",
       "port": "{PORT}"
     },
-    "workers": "{PLT_NEXT_WORKERS}"
+    "workers": "{PLT_NEXT_WORKERS}",
+    "metrics": {
+      "port": 9090
+    }
   }
 }
