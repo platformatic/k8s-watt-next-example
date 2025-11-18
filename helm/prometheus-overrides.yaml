@@ -1,0 +1,24 @@
+# Prometheus Operator (kube-prometheus-stack) configuration
+prometheus:
+  prometheusSpec:
+    retention: 15d
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
+    # Enable PodMonitor discovery - match all PodMonitors
+    # Note: kube-prometheus-stack defaults to matching PodMonitors with release label
+    # So PodMonitors need to have label: release: prometheus
+    podMonitorSelector: {}
+    podMonitorNamespaceSelector: {}
+    # Service configuration
+    serviceMonitorSelector: {}
+    serviceMonitorNamespaceSelector: {}
+  # Service configuration for external access
+  service:
+    type: NodePort
+    nodePort: 30090
+
