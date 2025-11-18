@@ -1,0 +1,20 @@
+---
+services:
+  application:
+    build: .
+    ports:
+      - 3042:3042
+    environment:
+      PORT: 3042
+      PLT_SERVER_LOGGER_LEVEL: info
+      PLT_NEXT_WORKERS: 1
+    deploy:
+      resources:
+        limits:
+          cpus: 1
+    depends_on:
+      - valkey
+  valkey:
+    image: valkey/valkey:latest
+    ports:
+      - 6379:6379
